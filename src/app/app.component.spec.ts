@@ -30,6 +30,32 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to pesel!');
+    expect(compiled.querySelector('h1').textContent).toContain('Walidator PESEL');
+  });
+
+  it('should mark valid PESEL as valid', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
+    //expect(AppComponent.isValidPesel('19302411759')).toBe(true);
+    //expect(AppComponent.isValidPesel('19302411759')).not.toBe(true);
+
+    /*
+    console.log('Prawidłowy pesel LM', this.isValidPesel('19302411759')); //Prawidłowy pesel true
+    console.log('Prawidłowy pesel BM', this.isValidPesel('89082907810')); //Prawidłowy pesel true
+    console.log('Prawidłowy pesel SNM', this.isValidPesel('90012214766')); //Prawidłowy pesel true
+    console.log('Prawidłowy pesel', this.isValidPesel('89082907810')); //Prawidłowy pesel true
+    console.log('Prawidłowy pesel', this.isValidPesel('64042999928')); //Prawidłowy pesel true
+    console.log('Prawidłowy pesel', this.isValidPesel('52022114478')); //Prawidłowy pesel true
+    console.log('Prawidłowy pesel', this.isValidPesel('72021706812')); //Prawidłowy pesel true
+    console.log('Prawidłowy pesel', this.isValidPesel('80042448774')); //Prawidłowy pesel true
+    console.log('Prawidłowy pesel', this.isValidPesel('97031003029')); //Prawidłowy pesel true
+    console.log('Nieprawidłowy pesel WIKI', this.isValidPesel('44051401358')); //Nieprawidłowy pesel false
+    console.log('Nieprawidłowy pesel', this.isValidPesel('97031003021')); //Nieprawidłowy pesel false
+    console.log('Nieprawidłowy pesel', this.isValidPesel('97031003023')); //Nieprawidłowy pesel false
+    console.log('Nieprawidłowy pesel', this.isValidPesel('')); //Nieprawidłowy pesel false
+    console.log('Nieprawidłowy pesel', this.isValidPesel(1)); //Nieprawidłowy pesel false
+    console.log('Nieprawidłowy pesel', this.isValidPesel(true)); //Nieprawidłowy pesel false
+    console.log('Nieprawidłowy pesel', this.isValidPesel(null)); //Nieprawidłowy pesel false
+    */
   });
 });
