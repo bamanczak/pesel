@@ -2,60 +2,53 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
+let component;
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+    component = new AppComponent();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+  it('should accept valid PESEL numbers', () => {
+    expect(component.isValidPesel('19302411759')).toBe(true);
+    expect(component.isValidPesel('64042999928')).toBe(true);
+    expect(component.isValidPesel('52022114478')).toBe(true);
+    expect(component.isValidPesel('72021706812')).toBe(true);
+    expect(component.isValidPesel('80042448774')).toBe(true);
+    expect(component.isValidPesel('97031003029')).toBe(true);
   });
 
-  it(`should have as title 'pesel'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('pesel');
+  it('should reject invalid PESEL numbers', () => {
+    expect(component.isValidPesel('44051401358')).toBe(false);
+    expect(component.isValidPesel('97031003021')).toBe(false);
+    expect(component.isValidPesel('97031003023')).toBe(false);
+    expect(component.isValidPesel('')).toBe(false);
+    expect(component.isValidPesel(1)).toBe(false);
+    expect(component.isValidPesel(true)).toBe(false);
+    expect(component.isValidPesel(null)).toBe(false);
   });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Walidator PESEL');
+  it('should accept valid dates', () => {
+    expect(component.verifyDate(2019, 2, 28)).toBe(true);
+    expect(component.verifyDate(2020, 2, 29)).toBe(true);
+    expect(component.verifyDate(2020, 1, 1)).toBe(true);
+    expect(component.verifyDate(2020, 12, 31)).toBe(true);
   });
 
-  it('should mark valid PESEL as valid', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const component = fixture.componentInstance;
-    //expect(AppComponent.isValidPesel('19302411759')).toBe(true);
-    //expect(AppComponent.isValidPesel('19302411759')).not.toBe(true);
-
-    /*
-    console.log('Prawidłowy pesel LM', this.isValidPesel('19302411759')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel BM', this.isValidPesel('89082907810')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel SNM', this.isValidPesel('90012214766')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('89082907810')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('64042999928')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('52022114478')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('72021706812')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('80042448774')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('97031003029')); //Prawidłowy pesel true
-    console.log('Nieprawidłowy pesel WIKI', this.isValidPesel('44051401358')); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel('97031003021')); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel('97031003023')); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel('')); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel(1)); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel(true)); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel(null)); //Nieprawidłowy pesel false
-    */
+  it('should reject invalid dates', () => {
+    expect(component.verifyDate(2019, 1, 32)).toBe(false);
+    expect(component.verifyDate(2019, 2, 29)).toBe(false);
+    expect(component.verifyDate(2020, 2, 30)).toBe(false);
+    expect(component.verifyDate(2019, 3, 32)).toBe(false);
+    expect(component.verifyDate(2019, 4, 31)).toBe(false);
+    expect(component.verifyDate(2019, 5, 32)).toBe(false);
+    expect(component.verifyDate(2019, 6, 31)).toBe(false);
+    expect(component.verifyDate(2019, 7, 32)).toBe(false);
+    expect(component.verifyDate(2019, 8, 32)).toBe(false);
+    expect(component.verifyDate(2019, 9, 31)).toBe(false);
+    expect(component.verifyDate(2019, 10, 32)).toBe(false);
+    expect(component.verifyDate(2019, 11, 31)).toBe(false);
+    expect(component.verifyDate(2019, 12, 32)).toBe(false);
   });
+
 });

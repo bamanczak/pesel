@@ -2,12 +2,42 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger(
+      'inOutAnimation',
+      [
+        transition(
+          ':enter',
+          [
+            style({ opacity: 0 }),
+            animate('1s 0.35s ease-out',
+                    style({ opacity: 1 }))
+          ]
+        ),
+        transition(
+          ':leave',
+          [
+            style({ opacity: 1 }),
+            animate('0.3s ease-in',
+                    style({ opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class AppComponent {
   inputNumber: string;
@@ -33,28 +63,7 @@ export class AppComponent {
       this.month = this.getMonth(this.peselArray);
       this.day = this.getDay(this.peselArray);
       this.isMale = this.peselArray[9]%2==1;
-      //console.log(this.sex);
     }
-
-    //Testy
-    /*
-    console.log('Prawidłowy pesel LM', this.isValidPesel('19302411759')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel BM', this.isValidPesel('89082907810')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel SNM', this.isValidPesel('90012214766')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('89082907810')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('64042999928')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('52022114478')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('72021706812')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('80042448774')); //Prawidłowy pesel true
-    console.log('Prawidłowy pesel', this.isValidPesel('97031003029')); //Prawidłowy pesel true
-    console.log('Nieprawidłowy pesel WIKI', this.isValidPesel('44051401358')); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel('97031003021')); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel('97031003023')); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel('')); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel(1)); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel(true)); //Nieprawidłowy pesel false
-    console.log('Nieprawidłowy pesel', this.isValidPesel(null)); //Nieprawidłowy pesel false
-    */
   }
 
   isValidPesel(pesel) {
@@ -88,7 +97,7 @@ export class AppComponent {
     this.getDay(pesel);
   }
 
-  verifyDate (y:number, m:number, d:number) {
+  verifyDate(y:number, m:number, d:number) {
     var dt = new Date(y,m-1,d);
     return dt.getDate()==d &&
           dt.getMonth()==m-1 &&
