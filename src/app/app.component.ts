@@ -49,6 +49,7 @@ export class AppComponent {
   day;
   isMale;
   isInitiated: boolean;
+  hasFocus: boolean;
 
 
   onSubmit() {
