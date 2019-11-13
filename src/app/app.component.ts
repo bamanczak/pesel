@@ -56,11 +56,8 @@ export class AppComponent {
     this.isInitiated = true;
     const pesel = this.inputNumber;
     this.isValid = this.isValidPesel(pesel);
-    console.log('PESEL z inputu:', this.isValid);
     if (this.isValid) {
-      this.year = this.getYear(this.peselArray);
-      this.month = this.getMonth(this.peselArray);
-      this.day = this.getDay(this.peselArray);
+      this.getDate(this.peselArray);
       this.isMale = this.peselArray[9] % 2 === 1;
     }
   }
