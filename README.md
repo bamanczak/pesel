@@ -97,3 +97,7 @@ deploy:
 - [ ] Wprowadź na branchu `invalid` zmianę, która spowoduje, że któryś z testów nie przejdzie u
 - [ ] `git commit` oraz `git push`
 - [ ] stwórz Pull Request z `invalid` do `master`
+
+ ## Zadanie *
+- [ ] Co najmniej 1 rodzaj nieprawidłowego numeru PESEL jest oznaczany przez walidator jako prawidłowy. Jesteś w stanie go znaleźć?
+- [ ] Jesteś w stanie go naprawić?
