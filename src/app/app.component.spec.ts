@@ -17,10 +17,20 @@ describe('AppComponent', () => {
     expect(component.isValidPesel('97031003029')).toBe(true);
   });
 
-  it('should reject invalid PESEL numbers', () => {
+  it('should reject PESEL numbers with invalid controlNumber', () => {
     expect(component.isValidPesel('44051401358')).toBe(false);
     expect(component.isValidPesel('97031003021')).toBe(false);
     expect(component.isValidPesel('97031003023')).toBe(false);
+  });
+
+  it('should reject PESEL numbers with invalid date', () => {
+    expect(component.isValidPesel('96023007818')).toBe(false);
+    expect(component.isValidPesel('96130207819')).toBe(false);
+    expect(component.isValidPesel('96000207813')).toBe(false);
+    expect(component.isValidPesel('95022907815')).toBe(false);
+  });
+
+  it('should reject PESEL numbers of invalid type', () => {
     expect(component.isValidPesel('')).toBe(false);
     expect(component.isValidPesel(1)).toBe(false);
     expect(component.isValidPesel(true)).toBe(false);
