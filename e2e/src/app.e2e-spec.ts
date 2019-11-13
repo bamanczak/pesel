@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Walidator PESEL');
+    expect(page.getTitleText()).toEqual('Sprawdź swój PESEL');
   });
 
   afterEach(async () => {
