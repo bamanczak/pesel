@@ -25,9 +25,9 @@
 <div *ngIf="isInitiated" [@inOutAnimation]>
     <h2 class="container isValidMessage" [ngClass]="{ 'valid': isValid }" fxLayoutAlign="center">
         <mat-icon class="vertical-center" *ngIf="!isValid">cancel</mat-icon>
-        <span *ngIf="!isValid">PESEL nieprawidłowy</span>
+        <span id="invalid-message" *ngIf="!isValid">PESEL nieprawidłowy</span>
         <mat-icon class="vertical-center" *ngIf="isValid">cancel</mat-icon>
-        <span *ngIf="isValid">PESEL prawidłowy</span>
+        <span id="valid-message" *ngIf="isValid">PESEL prawidłowy</span>
 
     </h2>
 </div>
@@ -39,12 +39,12 @@
           <mat-card fxFlex="30%">
             <mat-card-content fxfill fxLayoutAlign="center">
               <mat-icon class="vertical-center" fxFlex="30">calendar_today</mat-icon>
-              <span fxFlex="60">{{day}}.{{month}}.{{year}}</span>
+              <span id="pesel-date" fxFlex="60">{{day}}.{{month}}.{{year}}</span>
             </mat-card-content>
           </mat-card>
 
           <mat-card fxFlex="30%">
-            <mat-card-content fxfill fxLayoutAlign="center">
+            <mat-card-content fxfill fxLayoutAlign="center" id="pesel-sex">
               <mat-icon class="vertical-center" fxFlex="30">wc</mat-icon>
               <span *ngIf="isMale" fxFlex="60">Mężczyzna</span>
               <span *ngIf="!isMale" fxFlex="60">Kobieta</span>
