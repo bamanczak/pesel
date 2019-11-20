@@ -26,17 +26,3 @@ Uruchom `ng test` aby wykonać testy jednostkowe z wykorzystaniem [Karma](https:
 ## Uruchomienie testów end-to-end
 
 Uruchom `ng e2e` aby wykonać testy jednostkowe z wykorzystaniem [Protractor](http://www.protractortest.org/).
-
-## Zadanie
-[ ] Stwórz  forka repozytorium
-[ ] Sklonuj repozytorium
-[ ] Uruchom aplikację lokalnie
-[ ] Uruchom linter
-[ ] Napraw wszystkie błędy lintera
-[ ] Uruchom testy jednostkowe
-[ ] Napraw testy jednostkowe
-[ ] Uruchom testy jednostkowe z flagą --code-coverage
-[ ] Zweryfikuj raport html pokrycia kodu w pliku .coverage\pesel\index.html
-dopisz przypadki testowe, które zwiększa pokrycie - zignoruj przypadki dla funkcji onSubmit()
-[ ] Uruchom testy End-to-End
-[ ] Napraw testy End-to-End
