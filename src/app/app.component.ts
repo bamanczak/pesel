@@ -66,7 +66,7 @@ export class AppComponent {
     if (typeof pesel !== 'string') {
       return false;
     } else if ( pesel.length != 11) {
-      return false
+      return false;
     } else {
       const peselArray = new Array();
       for (let i = 0; i < 11; i++) {
