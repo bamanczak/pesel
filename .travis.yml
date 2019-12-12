@@ -17,5 +17,8 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: dist/pesel
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
   on:
     branch: master

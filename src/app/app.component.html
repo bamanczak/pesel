@@ -10,7 +10,7 @@
   <mat-card class="big-input" [ngClass]="{ 'has-focus': hasFocus }">
     <form (ngSubmit)="onSubmit()" class="container">
 
-      <input matInput placeholder="Podaj numer PESEL" [(ngModel)]="inputNumber"
+      <input matInput placeholder="Podaj PESEL" [(ngModel)]="inputNumber"
               (focus)="hasFocus = true"
               (blur)="hasFocus = false"
               name="peselInput"

@@ -65,7 +65,7 @@ export class AppComponent {
   isValidPesel(pesel) {
     if (typeof pesel !== 'string') {
       return false;
-    } else if ( pesel.length != 11) {
+    } else if ( pesel.length !== 11) {
       return false;
     } else {
       const peselArray = new Array();
@@ -127,8 +127,8 @@ export class AppComponent {
     return year;
   }
 
-  isPeselMale(number: number) {
-    return number % 2 === 1;
+  isPeselMale(num: number) {
+    return num % 2 === 1;
   }
 
 }
