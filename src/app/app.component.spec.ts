@@ -9,6 +9,22 @@ describe('AppComponent', () => {
     component = new AppComponent();
   }));
 
+  it('should handle submit correctly with valid PESEL', () => {
+    component.inputNumber = '19321212346';
+    component.onSubmit();
+    expect(component.isValid).toBe(true);
+    expect(component.day).toBe(12);
+    expect(component.year).toBe(2019);
+    expect(component.month).toBe(12);
+  });
+
+  it('should handle submit correctly with invalid PESEL', () => {
+    component.inputNumber = '19321212345';
+    component.onSubmit();
+    expect(component.day).toBe(undefined);
+    expect(component.isValid).toBe(false);
+  });
+
   it('should accept valid PESEL numbers', () => {
     expect(component.isValidPesel('64042999928')).toBe(true);
     expect(component.isValidPesel('52022114478')).toBe(true);
@@ -32,6 +48,7 @@ describe('AppComponent', () => {
 
   it('should reject PESEL numbers of invalid type', () => {
     expect(component.isValidPesel('')).toBe(false);
+    expect(component.isValidPesel('640429999281')).toBe(false);
     expect(component.isValidPesel(1)).toBe(false);
     expect(component.isValidPesel(true)).toBe(false);
     expect(component.isValidPesel(null)).toBe(false);
@@ -58,6 +75,36 @@ describe('AppComponent', () => {
     expect(component.verifyDate(2019, 10, 32)).toBe(false);
     expect(component.verifyDate(2019, 11, 31)).toBe(false);
     expect(component.verifyDate(2019, 12, 32)).toBe(false);
+  });
+
+  it('should identify birth in XIXth century correctly', () => {
+      const pesel19Century: Array<number> = [1, 9, 9, 2, 1, 2, 1, 2, 3, 4, 5];
+      expect(component.getYear(pesel19Century)).toEqual(1819);
+  });
+
+  it('should identify birth in XXth century correctly', () => {
+      const pesel20Century: Array<number> = [1, 9, 1, 2, 1, 2, 1, 2, 3, 4, 5];
+      expect(component.getYear(pesel20Century)).toEqual(1919);
+  });
+
+  it('should identify birth in XXIth century correctly', () => {
+      const pesel21Century: Array<number> = [1, 9, 3, 2, 1, 2, 1, 2, 3, 4, 5];
+      expect(component.getYear(pesel21Century)).toEqual(2019);
+  });
+
+  it('should identify birth in XXIIth century correctly', () => {
+      const pesel22Century: Array<number> = [1, 9, 5, 2, 1, 2, 1, 2, 3, 4, 5];
+      expect(component.getYear(pesel22Century)).toEqual(2119);
+  });
+
+  it('should identify birth in XXIIIth century correctly', () => {
+      const pesel23Century: Array<number> = [1, 9, 7, 2, 1, 2, 1, 2, 3, 4, 5];
+      expect(component.getYear(pesel23Century)).toEqual(2219);
+  });
+
+  it('should identify sex correctly', () => {
+    expect(component.isPeselMale(0)).toBe(false);
+    expect(component.isPeselMale(1)).toBe(true);
   });
 
 });

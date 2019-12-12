@@ -58,13 +58,15 @@ export class AppComponent {
     this.isValid = this.isValidPesel(pesel);
     if (this.isValid) {
       this.getDate(this.peselArray);
-      this.isMale = this.peselArray[9] % 2 === 1;
+      this.isMale = this.isPeselMale(this.peselArray[9]);
     }
   }
 
   isValidPesel(pesel) {
     if (typeof pesel !== 'string') {
       return false;
+    } else if ( pesel.length != 11) {
+      return false
     } else {
       const peselArray = new Array();
       for (let i = 0; i < 11; i++) {
@@ -123,6 +125,10 @@ export class AppComponent {
     }
 
     return year;
+  }
+
+  isPeselMale(number: number) {
+    return number % 2 === 1;
   }
 
 }
