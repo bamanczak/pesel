@@ -36,7 +36,7 @@ jobs:
         run: npm run lint
       
       - name: Unit tests
-        run: npm run test ng --watch=false --browsers=ChromeHeadless
+        run: npm run test --watch=false --browsers=ChromeHeadless
         
       - name: Install Playwright
         run: npx playwright install --with-deps
